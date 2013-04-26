@@ -2,14 +2,12 @@
 var request = require('request');
 
 /**
- * Custom Facebook API Client
+ * Tiny Facebook Wrapper
  */
 
 "use strict"; //js-hint is fuck up ^^
 
-module.exports = function(logger) {
-
-  var apiUrl = 'https://graph.facebook.com';
+var apiUrl = 'https://graph.facebook.com';
 
   /**
    * Call the Facebook API with the options object
@@ -22,10 +20,10 @@ module.exports = function(logger) {
 
     request(options, function(error, response, body) {
       if (!error && response.statusCode == 200) {
-        logger.info('facebook response: ' + body);
+        console.log('facebook response: ' + body);
         callback(body)
       } else {
-        logger.error('error: ' + body);
+        console.log('error: ' + body);
         callback(new Error(body))
       }
     });
@@ -39,7 +37,7 @@ module.exports = function(logger) {
    * @param {object} params
    * @param {function} callback
    */
-   function get(url, accessToken, params, callback) {
+   exports.get = function(url, accessToken, params, callback) {
     var options = {};
     if(params) {
       url += '?fields=' + params.fields
@@ -48,7 +46,7 @@ module.exports = function(logger) {
       url += '?access_token=' + accessToken
     }
     options.url = apiUrl + url
-    logger.info('facebook request(get): ' + options.url);
+    console.log('facebook request(get): ' + options.url);
     callApi(options, callback);
   }
 
@@ -60,24 +58,16 @@ module.exports = function(logger) {
    * @param {object} data
    * @param {function} callback
    */
-   function post(url, accessToken, data, callback) {
+   exports.post = function(url, accessToken, data, callback) {
     var options = {};
     if (accessToken) {
       url += '?access_token=' + accessToken
     }
     options.url = apiUrl + url
     options.body = data
-    logger.info('facebook request(post): ' + options.url);
+    console.log('facebook request(post): ' + options.url);
     callApi(options, callback);
   }
 
-  function del(url, accessToken, data, callback) {
+  exports.del = function(url, accessToken, data, callback) {
   }
-
-  return {
-    'get': get,
-    'post': post,
-    'del': del
-  }
-
-}
