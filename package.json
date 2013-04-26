@@ -1,0 +1,30 @@
+{
+  "name": "tiny-facebook-wrapper",
+  "version": "0.0.1",
+  "description": "Simple Facebook API Client",
+  "keywords": [
+    "facebook",
+    "api",
+    "wrapper",
+    "client"
+  ],
+  "author":  {
+    "name": "David Cunha",
+    "email": "davidgoncalvescunha@gmail.com"
+  },
+  "engines": {
+    "node": ">= 0.8.0",
+    "npm": ">= 1.0.0"
+  },
+  "dependencies": {
+    "request": "2.20.0"
+  },
+  "devDependencies": {
+     "mocha" : ">=1.8.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/davidcunha/tiny-facebook-wrapper.git"
+  },
+  "main": "node-facebook.js"
+}
