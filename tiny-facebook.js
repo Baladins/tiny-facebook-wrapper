@@ -1,13 +1,13 @@
 
-var request = require('request');
+var request = require('request')
+  , util = require('util')
+  , qs = require('querystring');
 
 /**
  * Tiny Facebook Wrapper
  */
 
-"use strict"; //js-hint is fuck up ^^
-
-var apiUrl = 'https://graph.facebook.com';
+ var apiUrl = 'https://graph.facebook.com/';
 
   /**
    * Call the Facebook API with the options object
@@ -17,14 +17,11 @@ var apiUrl = 'https://graph.facebook.com';
    * @param {function} callback
    */
    function callApi(options, callback) {
-
     request(options, function(error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('facebook response: ' + body);
-        callback(body)
+        callback(false, body);
       } else {
-        console.log('error: ' + body);
-        callback(new Error(body))
+        callback(new Error(body), null);
       }
     });
   }
@@ -34,21 +31,23 @@ var apiUrl = 'https://graph.facebook.com';
    *
    * @param {string} url
    * @param {string} accessToken
-   * @param {object} params
+   * @param {object or function} params
    * @param {function} callback
    */
    exports.get = function(url, accessToken, params, callback) {
+    if (typeof params === 'function') {
+      callback = params;
+      params   = null;
+    }
+    if(params) url += '?fields=' + params.fields;
+    if (accessToken) url += '?access_token=' + accessToken;
+
     var options = {};
-    if(params) {
-      url += '?fields=' + params.fields
-    }
-    if (accessToken) {
-      url += '?access_token=' + accessToken
-    }
-    options.url = apiUrl + url
+    options.url = apiUrl + url;
+
     console.log('facebook request(get): ' + options.url);
     callApi(options, callback);
-  }
+  };
 
   /**
    * Post wrapper
@@ -59,15 +58,13 @@ var apiUrl = 'https://graph.facebook.com';
    * @param {function} callback
    */
    exports.post = function(url, accessToken, data, callback) {
-    var options = {};
-    if (accessToken) {
-      url += '?access_token=' + accessToken
-    }
-    options.url = apiUrl + url
-    options.body = data
-    console.log('facebook request(post): ' + options.url);
-    callApi(options, callback);
-  }
+    if (accessToken) url += '?access_token=' + accessToken;
 
-  exports.del = function(url, accessToken, data, callback) {
-  }
+    var options = {};
+    options.url = apiUrl + url;
+    options.method = 'POST';
+    options.body = qs.stringify(data);
+
+    console.log('facebook request(post): ' + options.url + ' :body: ' + options.body);
+    callApi(options, callback);
+  };
