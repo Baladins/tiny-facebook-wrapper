@@ -26,5 +26,5 @@
     "type": "git",
     "url": "git://github.com/davidcunha/tiny-facebook-wrapper.git"
   },
-  "main": "node-facebook.js"
+  "main": "tiny-facebook.js"
 }
