@@ -1,11 +1,11 @@
 /**
  * Tiny Facebook Wrapper Tests.
- * @version 0.0.1
+ * @version 0.0.2
  * @author David Cunha
  */
 
  var facebook = require('../index')
- , assert = require('assert');
+   , assert = require('assert');
 
  var options = {
   userId : '', //insert a valid user ID
@@ -15,7 +15,7 @@
 describe('facebook', function() {
 
   /**
-   * Test getting user basic info with fields
+   * Get user basic info with fields
    */
    it('should be able to get public info (name, gender)', function(done) {
     this.timeout(5000);
@@ -52,7 +52,7 @@ describe('facebook', function() {
   });
 
   /**
-   * Test getting user friends
+   * Get user friends
    */
    it('should be able to get user\'s friends', function(done) {
     this.timeout(5000);
@@ -69,16 +69,35 @@ describe('facebook', function() {
   });
 
   /**
-   * Test posting in feed
+   * Post in feed
    */
+   var postId;
    it('should be able to post message in feed', function(done) {
     this.timeout(5000);
 
-    facebook.post(options.userId + '/feed', options.accessToken, {message : 'I love Node.js!'}, function(error, res) {
+    facebook.post(options.userId + '/feed', options.accessToken, {message : '.'}, function(error, res) {
       if(error) {
         console.log('error: ' + error);
       } else {
         assert.ok(true, JSON.parse(res).id);
+        postId = JSON.parse(res).id;
+        console.log('response: ' + res);
+        done();
+      }
+    });
+  });
+
+  /**
+   * Delete post in feed
+   */
+   it('should be able to delete message in feed', function(done) {
+    this.timeout(5000);
+
+    facebook.del(postId, options.accessToken, function(error, res) {
+      if(error) {
+        console.log('error: ' + error);
+      } else {
+        assert.ok(true, 'true');
         console.log('response: ' + res);
         done();
       }

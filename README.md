@@ -10,7 +10,7 @@ Tiny Facebook Wrapper is the smallest facebook client with the longest name that
 ```js
 var facebook = require('tiny-facebook-wrapper');
 
-facebook.get("/me", yourToken, {fields : name,gender}, function(error, res) {
+facebook.get('/me', yourToken, {fields : name,gender}, function(error, res) {
   if(!error) {
     console.log(res); //json response
   }
@@ -20,7 +20,7 @@ facebook.get("/me", yourToken, {fields : name,gender}, function(error, res) {
 or
 
 ```js
-facebook.get("/me", yourToken, function(error, callback) {
+facebook.get('/me', yourAppToken, function(error, res) {
   if(!error) {
     console.log(res); //json response
   }
@@ -32,25 +32,34 @@ facebook.get("/me", yourToken, function(error, callback) {
 ```js
 var facebook = require('tiny-facebook-wrapper');
 
-facebook.post("/me", yourToken, {message : "It's a trap"}, function(error, res) {
+facebook.post('/me/feed', yourAppToken, {message : "It's a trap"}, function(error, res) {
   if(!error) {
     console.log(res); //json response
   }
 });
 ```
 
-## TODOS
+## Delete request
 
- - Delete method
- - More unit tests
+```js
+var facebook = require('tiny-facebook-wrapper');
+
+facebook.del(postId, yourAppToken, function(error, res) {
+  if(!error) {
+    console.log(res); //json response
+  }
+});
+```
 
 ## Testing
 
-Before running any test, you need to add a valid accessToken which you can get via [passport.js](https://github.com/jaredhanson/passport) or [everyauth](https://github.com/bnoguchi/everyauth). 
+Before running any test, you need to add a valid accessToken which you can get via [passport.js](https://github.com/jaredhanson/passport) or [everyauth](https://github.com/bnoguchi/everyauth).
 
-```js
-    mocha test/ -R spec //I will hack a makefile for this
-```
+    $ mocha test/ -R spec //I will hack a makefile for this
+
+## TODOS
+
+ - More unit tests
 
 ## License
 
