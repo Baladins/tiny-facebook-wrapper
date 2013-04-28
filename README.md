@@ -57,10 +57,6 @@ Before running any test, you need to add a valid accessToken which you can get v
 
     $ mocha test/ -R spec //I will hack a makefile for this
 
-## TODOS
-
- - More unit tests
-
 ## License
 
 MIT
