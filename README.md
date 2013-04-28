@@ -10,7 +10,7 @@ Tiny Facebook Wrapper is the smallest facebook client with the longest name that
 ```js
 var facebook = require('tiny-facebook-wrapper');
 
-facebook.get('/me', yourToken, {fields : name,gender}, function(error, res) {
+facebook.get('/me', yourToken, {fields : ['name','gender']}, function(error, res) {
   if(!error) {
     console.log(res); //json response
   }

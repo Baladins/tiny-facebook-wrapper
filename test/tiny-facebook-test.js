@@ -20,7 +20,7 @@ describe('user', function() {
    it('should be able to get public info (name, gender)', function(done) {
     this.timeout(5000);
 
-    facebook.get(options.userId, null, {fields : 'name,gender'}, function(error, res) {
+    facebook.get(options.userId, null, {fields : ['name','gender']}, function(error, res) {
       if(error) {
         console.log('error: ' + error);
       } else {
@@ -75,7 +75,7 @@ describe('user', function() {
    it('should be able to post message in feed', function(done) {
     this.timeout(5000);
 
-    facebook.post(options.userId + '/feed', options.accessToken, {message : 'I love Node.js'}, function(error, res) {
+    facebook.post(options.userId + '/feed', options.accessToken, {message : encodeURIComponent('I love Node.js')}, function(error, res) {
       if(error) {
         console.log('error: ' + error);
       } else {
