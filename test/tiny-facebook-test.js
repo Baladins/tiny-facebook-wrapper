@@ -4,7 +4,7 @@
  * @author David Cunha
  */
 
- var facebook = require('../index')
+var facebook = require('../index')
    , assert = require('assert');
 
  var options = {
@@ -75,7 +75,7 @@ describe('user', function() {
    it('should be able to post message in feed', function(done) {
     this.timeout(5000);
 
-    facebook.post(options.userId + '/feed', options.accessToken, {message : encodeURIComponent('I love Node.js')}, function(error, res) {
+    facebook.post(options.userId + '/feed', options.accessToken, {message : 'I love Node'}, function(error, res) {
       if(error) {
         console.log('error: ' + error);
       } else {
@@ -117,7 +117,7 @@ describe('user', function() {
       }
     });
 
-    facebook.post({object: 'object'}, options.accessToken, {message : 'I love Node.js'}, function(error, res) {
+    facebook.post({object: 'object'}, options.accessToken, {message : 'I love Node'}, function(error, res) {
       if(error) {
         console.log('error: ' + error);
         assert.equal(error, 'Error: The url must be a string');
@@ -139,7 +139,7 @@ describe('user', function() {
    it('should not be able to send a not valid accessToken', function(done) {
     this.timeout(5000);
 
-    facebook.post(options.userId + '/feed', null, {message : 'I love Node.js'}, function(error, res) {
+    facebook.post(options.userId + '/feed', null, {message : 'I love Node'}, function(error, res) {
       if(error) {
         console.log('error: ' + error);
         assert.equal(error, 'Error: You must enter a valid token');

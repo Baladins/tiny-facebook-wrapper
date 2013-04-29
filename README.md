@@ -32,7 +32,7 @@ facebook.get('/me', yourAppToken, function(error, res) {
 ```js
 var facebook = require('tiny-facebook-wrapper');
 
-facebook.post('/me/feed', yourAppToken, {message : "It's a trap"}, function(error, res) {
+facebook.post('/me/feed', yourAppToken, {message : 'I love Node'}, function(error, res) {
   if(!error) {
     console.log(res); //json response
   }
