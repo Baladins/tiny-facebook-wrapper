@@ -10,7 +10,7 @@ Tiny Facebook Wrapper is the smallest facebook client with the longest name that
 ```js
 var facebook = require('tiny-facebook-wrapper');
 
-facebook.get('/me', yourToken, {fields : ['name', 'gender']}, function (error, res) {
+facebook.get('/me', {fields : ['name', 'gender']}, function (error, res) {
   if (!error) {
     console.log(res); //json response
   }
@@ -20,7 +20,17 @@ facebook.get('/me', yourToken, {fields : ['name', 'gender']}, function (error, r
 or
 
 ```js
-facebook.get('/me', yourAppToken, function (error, res) {
+facebook.get('/me/groups', accessToken, function (error, res) {
+  if (!error) {
+    console.log(res); //json response
+  }
+});
+```
+
+or
+
+```js
+facebook.get('/me', function (error, res) {
   if (!error) {
     console.log(res); //json response
   }
@@ -32,7 +42,7 @@ facebook.get('/me', yourAppToken, function (error, res) {
 ```js
 var facebook = require('tiny-facebook-wrapper');
 
-facebook.post('/me/feed', yourAppToken, {message : 'I love Node'}, function (error, res) {
+facebook.post('/me/feed', accessToken, {message : 'I love Node'}, function (error, res) {
   if (!error) {
     console.log(res); //json response
   }
@@ -44,7 +54,7 @@ facebook.post('/me/feed', yourAppToken, {message : 'I love Node'}, function (err
 ```js
 var facebook = require('tiny-facebook-wrapper');
 
-facebook.del(postId, yourAppToken, function (error, res) {
+facebook.del(postId, accessToken, function (error, res) {
   if (!error) {
     console.log(res); //json response
   }
