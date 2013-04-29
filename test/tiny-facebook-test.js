@@ -1,6 +1,6 @@
 /**
  * Tiny Facebook Wrapper Tests.
- * @version 0.0.5
+ * @version 0.0.6
  * @author David Cunha
  */
 
@@ -20,7 +20,7 @@ describe('user', function () {
   it('should be able to get public info (name, gender)', function (done) {
     this.timeout(5000);
 
-    facebook.get(options.userId, null, {fields : ['name', 'gender']}, function (error, res) {
+    facebook.get(options.userId, {fields : ['name', 'gender']}, function (error, res) {
       if (error) {
         console.log('error: ' + error);
       } else {
@@ -38,7 +38,7 @@ describe('user', function () {
   it('should be able to get public info (without fields)', function (done) {
     this.timeout(5000);
 
-    facebook.get(options.userId, null, function (error, res) {
+    facebook.get(options.userId, function (error, res) {
 
       if (error) {
         console.log('error: ' + error);
