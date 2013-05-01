@@ -60,6 +60,9 @@ facebook.del(postId, accessToken, function (error, res) {
   }
 });
 ```
+## TODO
+
+Support photo uploading via multipart/form-data
 
 ## Testing
 
