@@ -1,6 +1,6 @@
 {
   "name": "tiny-facebook-wrapper",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Simple Facebook API Client",
   "keywords": [
     "facebook",
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/davidcunha/tiny-facebook-wrapper.git"
+	"url": "git://github.com/cdroberson/tiny-facebook-wrapper.git"
   },
   "main": "tiny-facebook.js"
 }
