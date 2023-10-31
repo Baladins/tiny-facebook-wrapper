@@ -2,6 +2,7 @@
   "name": "tiny-facebook-wrapper",
   "version": "0.0.10",
   "description": "Simple Facebook API Client",
+  "license": "MIT",
   "keywords": [
     "facebook",
     "api",
@@ -13,6 +14,16 @@
     "name": "David Cunha",
     "email": "davidgoncalvescunha@gmail.com"
   },
+  "engines": {
+    "node": ">=18.16.1",
+    "npm": ">=9.5.1"
+  },
+  "maintainers": [
+    {
+      "name": "Harold Thetiot",
+      "url": "https://baladins.io/"
+    }
+  ],
   "scripts": {
     "test": "mocha"
   },
@@ -24,6 +35,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/cdroberson/tiny-facebook-wrapper.git"
+    "url": "git://github.com/baladins/tiny-facebook-wrapper.git"
+  },
+  "bugs": {
+    "url": "git://github.com/baladins/tiny-facebook-wrapper.git"
   }
 }
