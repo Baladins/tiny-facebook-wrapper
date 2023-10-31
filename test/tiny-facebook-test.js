@@ -1,6 +1,5 @@
 /**
  * Tiny Facebook Wrapper Tests.
- * @version 0.0.7
  * @author David Cunha
  */
 
