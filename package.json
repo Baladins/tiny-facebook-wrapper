@@ -1,5 +1,5 @@
 {
-  "name": "tiny-facebook-wrapper",
+  "name": "@baladins/tiny-facebook-wrapper",
   "version": "0.0.10",
   "description": "Simple Facebook API Client",
   "license": "MIT",
